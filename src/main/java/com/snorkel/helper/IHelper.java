@@ -21,4 +21,16 @@ public interface IHelper {
 	public Clusterer loadCluster (String path) throws IOException, ClassNotFoundException;
 	public void saveClassifier(Classifier classifier, String local) throws IOException;
 	public Classifier loadClassifier (String path) throws IOException, ClassNotFoundException;
+	
+	public String getFileNameIntermediario();
+	
+
+	public void setFileNameIntermediario(String fileNameIntermediario);
+	
+
+	public String getFileNameFinal();
+	
+
+	public void setFileNameFinal(String fileNameFinal);
+	
 }

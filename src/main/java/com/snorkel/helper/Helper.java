@@ -28,6 +28,8 @@ public class Helper implements IHelper {
 	double razaoTrainTest=0.7;
 	int percentTrain;
 	int percentTest;
+	public String fileNameIntermediario="intermediario";
+	public String fileNameFinal="final";
 	
 	public Instances createDataArff(Map<String, Mat> imagens,
 			List<String> classes) throws IOException {
@@ -88,10 +90,10 @@ public class Helper implements IHelper {
 		}
 		
 		
-		 ArffSaver saver = new ArffSaver();
-		 saver.setInstances(data);
-		 saver.setFile(new File("saidas/test.arff"));		
-		 saver.writeBatch();
+//		 ArffSaver saver = new ArffSaver();
+//		 saver.setInstances(data);
+//		 saver.setFile(new File("saidas/"+fileNameIntermediario+".arff"));		
+//		 saver.writeBatch();
 		
 		//System.out.println(data);
 		
@@ -137,10 +139,10 @@ public class Helper implements IHelper {
 			
 			
 			
-			 ArffSaver saver = new ArffSaver();
-			 saver.setInstances(data);
-			 saver.setFile(new File("saidas/test.arff"));		
-			 saver.writeBatch();
+//			 ArffSaver saver = new ArffSaver();
+//			 saver.setInstances(data);
+//			 saver.setFile(new File("saidas/testHist.arff"));		
+//			 saver.writeBatch();
 			
 			//System.out.println(data);
 			
@@ -205,7 +207,7 @@ public class Helper implements IHelper {
 		
 		 ArffSaver saver = new ArffSaver();
 		 saver.setInstances(data);
-		 saver.setFile(new File("saidas/testHist.arff"));		
+		 saver.setFile(new File("saidas/"+fileNameFinal+".arff"));		
 		 saver.writeBatch();
 		
 	
@@ -292,4 +294,22 @@ public class Helper implements IHelper {
 		return (Classifier)obj;
 	}
 
+	public String getFileNameIntermediario() {
+		return fileNameIntermediario;
+	}
+
+	public void setFileNameIntermediario(String fileNameIntermediario) {
+		this.fileNameIntermediario = fileNameIntermediario;
+	}
+
+	public String getFileNameFinal() {
+		return fileNameFinal;
+	}
+
+	public void setFileNameFinal(String fileNameFinal) {
+		this.fileNameFinal = fileNameFinal;
+	}
+	
+	
+	
 }

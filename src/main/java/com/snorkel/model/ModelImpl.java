@@ -161,7 +161,15 @@ public class ModelImpl implements Serializable{
 		if(descriptors_images!=null){
 			instancias_description_images = InstancesOfDescriptors(descriptors_images);
 		}
-		this.cluster = createCluster(descriptors_images);
+		if(this.cluster==null){
+			this.cluster = createCluster(descriptors_images);
+			helper.saveCluster(cluster, "models/model.data");
+		}else{
+			System.out.println("-------------------------------------");
+			System.out.println("-----------GERANDO HISTOGRAMAS-----------");
+			System.out.println("-------------------------------------");
+		}
+		
 		histograms = generateHistograms(instancias_description_images);		
 		return new Instances(helper.createArffHistogram(histograms, classes));
 		
@@ -242,6 +250,18 @@ public class ModelImpl implements Serializable{
 
 	public void setClassifier(Classifier classifier) {
 		this.classifier = classifier;
+	}
+	
+	public void  loadCluster(String path){
+		try {
+			this.cluster = helper.loadCluster(path);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

@@ -26,8 +26,8 @@ public class AvaliacaoDescritores {
 		
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		
-		FeatureDetector detector = FeatureDetector.create(FeatureDetector.FAST);
-	    DescriptorExtractor descriptor = DescriptorExtractor.create(DescriptorExtractor.FREAK);;
+		FeatureDetector detector = FeatureDetector.create(FeatureDetector.SIFT);
+	    DescriptorExtractor descriptor = DescriptorExtractor.create(DescriptorExtractor.SIFT);;
 	    DescriptorMatcher matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE);
 	   
 	  
@@ -40,7 +40,7 @@ public class AvaliacaoDescritores {
 	    descriptor.compute(img1, keypoints1, descriptors1);
 
 	    //second image
-	    Mat img2 = Highgui.imread("C:/ImagensTeste/boat/img1.pgm");
+	    Mat img2 = Highgui.imread("C:/ImagensTeste/boat/img4.pgm");
 	    Mat descriptors2 = new Mat();
 	    MatOfKeyPoint keypoints2 = new MatOfKeyPoint();
 
@@ -54,7 +54,7 @@ public class AvaliacaoDescritores {
 	    matcher.match(descriptors1,descriptors2,matches);
 	   
 	    
-	    double DIST_LIMIT = 0.60;
+	    double DIST_LIMIT = 0.15;
 	    List<DMatch> matchList = matches.toList();
 	    double found_matches = matches.toList().size();
 	    List<DMatch> matches_final = new ArrayList<DMatch>();

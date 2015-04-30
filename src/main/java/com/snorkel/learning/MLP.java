@@ -31,7 +31,7 @@ public class MLP implements ILearning {
 			 Evaluation eval = new Evaluation(TrainSet);
 			
 			 Random rand = new Random(1);  // using seed = 1
-			 int folds = 2;
+			 int folds = 10;
 			 eval.crossValidateModel(classifier, TestSet, folds, rand);
 			 System.out.println(eval.toSummaryString());
 			 System.out.println(eval.toMatrixString());

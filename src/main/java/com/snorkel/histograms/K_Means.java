@@ -5,11 +5,13 @@ import weka.clusterers.Clusterer;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.core.ManhattanDistance;
+import weka.estimators.MahalanobisEstimator;
 
 public class K_Means implements BagOfWords{
 
 	public Clusterer clustering(Instances data, int n) {
-		System.out.println("Gerando Cluster");
+		//System.out.println("Gerando Cluster");
 		String[] options = new String[1];
 		//options[0] = String.valueOf(n);
 	    
@@ -17,6 +19,8 @@ public class K_Means implements BagOfWords{
 		
 		try {
 			kmeans.setNumClusters(n);
+//			ManhattanDistance m = new ManhattanDistance();
+//			kmeans.setDistanceFunction(m);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -31,7 +35,7 @@ public class K_Means implements BagOfWords{
 			e.printStackTrace();
 		}
 	    
-	    
+	    System.out.println("Cluster Gerado");
 
 	    Instances ClusterCenter = kmeans .getClusterCentroids();
 	    
@@ -41,14 +45,14 @@ public class K_Means implements BagOfWords{
 	    int[] ClusterSize = kmeans .getClusterSizes(); 
 	 
 
-	    ClusterEvaluation eval = new ClusterEvaluation();
-	    eval.setClusterer(kmeans );
-	    try {
-			eval.evaluateClusterer(data);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//	    ClusterEvaluation eval = new ClusterEvaluation();
+//	    eval.setClusterer(kmeans );
+//	    try {
+//			eval.evaluateClusterer(data);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 //	    for(int i=0;i<ClusterCenter.numInstances();i++){
 //	        System.out.println("Cluster#"+( i +1)+ ": "+ClusterSize[i]+" dados .");
